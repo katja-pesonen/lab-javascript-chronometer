@@ -14,24 +14,30 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+
+
 }
 
 function printMinutes() {
-  // ... your code goes here
+  minDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes('minDec'))
+  minUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getMinutes('minUni'))
+
 }
 
 function printSeconds() {
-  // ... your code goes here
+  secDecElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds('secDec'))
+  secUniElement.innerHTML = chronometer.computeTwoDigitNumber(chronometer.getSeconds('secDec'))
+  console.log(chronometer.getSeconds())
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+  
+  
 }
 
 function printSplit() {
-  // ... your code goes here
+  splitsElement.innerHTML = 'splits'
 }
 
 function clearSplits() {
@@ -39,27 +45,48 @@ function clearSplits() {
 }
 
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = 'STOP'
+  btnLeftElement.className = 'btn stop'
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = 'SPLIT'
+  btnRightElement.className = 'btn split'
 }
 
 function setStartBtn() {
-  // ... your code goes here
+  btnLeftElement.innerHTML = 'START'
+  btnLeftElement.className = 'btn start'
 }
 
 function setResetBtn() {
-  // ... your code goes here
+  btnRightElement.innerHTML = 'RESET'
+  btnRightElement.className = 'btn reset'
 }
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
+  if ( btnLeftElement.innerHTML === 'START') {
+    chronometer.start()
+    setStopBtn()
+    setSplitBtn()
+
+    printMinutes()
+    printSeconds()
+    
+  }
+  else {
+    chronometer.stop()
+    setStartBtn()
+    setResetBtn()
+    
+  }
+
+  console.log('Button left clicked')
 });
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  console.log('Button right clicked')
+  btnRightElement.innerText = 'SPLIT'
 });
